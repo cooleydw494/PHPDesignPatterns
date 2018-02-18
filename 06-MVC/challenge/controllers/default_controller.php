@@ -8,20 +8,19 @@
  *   videos. It will make way more sense and be more useful in general.
  */
 
-class Component
+class DefaultController
 {
-    protected $name = '';
-
-    public function __construct($name)
+    public function run($action = 'index', $id = 0)
     {
-        $this->name = $name;
+        if (!method_exists($this, $action)) {
+            $action = 'index';
+        }
+
+        return $this->$action($id);
     }
 
-    public function addOneAndEcho($i)
+    public function index()
     {
-        $i++;
-        echo $i . '-' . $this->name . '<br />';
-
-        Dispatcher::publish($this, $i);
+        include 'views/default.php';
     }
 }

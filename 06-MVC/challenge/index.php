@@ -8,18 +8,19 @@
  *   videos. It will make way more sense and be more useful in general.
  */
 
-/**
- * Suggested URL patterns for your solution:
- *      index.php?m=greeting&a=hello
- *      index.php?m=greeting&a=goodbye
- */
-?>
+include_once 'controllers/default_controller.php';
+include_once 'controllers/greeting_controller.php';
+include_once 'models/greeting.php';
 
-<ul>
-    <li>
-        <a href="hello.php">Say Hello</a>
-    </li>
-    <li>
-        <a href="goodbye.php">Say Goodbye</a>
-    </li>
-</ul>
+$action = isset($_GET['a']) ? $_GET['a'] : 'index';
+$module = isset($_GET['m']) ? $_GET['m'] : '';
+
+switch($module) {
+    case 'greeting':
+        $controller = new GreetingController();
+        break;
+    default:
+        $controller = new DefaultController();
+}
+
+$controller->run($action);

@@ -7,17 +7,16 @@
  *   by Keith Casey. If you've received this code without seeing the videos, go watch the
  *   videos. It will make way more sense and be more useful in general.
  */
-?>
 
-<h1>Hello and welcome</h1>
-<ul>
-    <li>
-        <a href="hello.php">Say Hello</a>
-    </li>
-    <li>
-        <a href="goodbye.php">Say Goodbye</a>
-    </li>
-    <li>
-        <a href="unrecognized.php">Unrecognized Request</a>
-    </li>
-</ul>
+class Greeting
+{
+    public function hello()
+    {
+        return "Hello and welcome";
+    }
+
+    public function goodbye()
+    {
+        return "Goodbye and thanks for coming";
+    }
+}
